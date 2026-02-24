@@ -4,12 +4,16 @@ using FraudMonitoringSystem.Helpers;
 using FraudMonitoringSystem.Hubs;
 using FraudMonitoringSystem.Repositories.Customer.Implementations;
 using FraudMonitoringSystem.Repositories.Customer.Implementations.Admin;
+using FraudMonitoringSystem.Repositories.Customer.Implementations.Rules;
 using FraudMonitoringSystem.Repositories.Customer.Interfaces;
 using FraudMonitoringSystem.Repositories.Customer.Interfaces.Admin;
+using FraudMonitoringSystem.Repositories.Customer.Interfaces.Rules;
 using FraudMonitoringSystem.Services.Customer.Implementations;
 using FraudMonitoringSystem.Services.Customer.Implementations.Admin;
+using FraudMonitoringSystem.Services.Customer.Implementations.Rules;
 using FraudMonitoringSystem.Services.Customer.Interfaces;
 using FraudMonitoringSystem.Services.Customer.Interfaces.Admin;
+using FraudMonitoringSystem.Services.Customer.Interfaces.Roles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -63,6 +67,19 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+
+
+
+//Roles
+builder.Services.AddScoped<IScenarioRepository, ScenarioRepository>();
+
+// Register Services
+builder.Services.AddScoped<IScenarioService, ScenarioService>();
+
+// Register DetectionRule Repository & Service
+builder.Services.AddScoped<IDetectionRuleRepository, DetectionRuleRepository>();
+builder.Services.AddScoped<IDetectionRuleService, DetectionRuleService>();
 
 // CORS 
 builder.Services.AddCors(options =>

@@ -1,0 +1,76 @@
+﻿using FraudMonitoringSystem.Models.Rules;
+using FraudMonitoringSystem.Services.Customer.Interfaces.Roles;
+using Microsoft.AspNetCore.Mvc;
+
+namespace FraudMonitoringSystem.Controllers.Roles
+{
+    [ApiController]
+
+    [Route("api/[controller]")]
+
+    public class DetectionRuleController : ControllerBase
+
+    {
+
+        private readonly IDetectionRuleService _service;
+
+        public DetectionRuleController(IDetectionRuleService service)
+
+        {
+
+            _service = service;
+
+        }
+
+        [HttpGet("{id}")]
+
+        public IActionResult GetRule(int id) => Ok(_service.GetRuleById(id));
+
+        [HttpGet]
+
+        public IActionResult GetAllRules() => Ok(_service.GetAllRules());
+
+        [HttpPost]
+
+        public IActionResult CreateRule([FromBody] DetectionRule rule)
+
+        {
+
+            _service.CreateRule(rule);
+
+            return Ok("Rule created successfully.");
+
+        }
+
+        [HttpPut("{id}")]
+
+        public IActionResult UpdateRule(int id, [FromBody] DetectionRule rule)
+
+        {
+
+            if (id != rule.RuleId)
+
+                return BadRequest("Rule ID mismatch.");
+
+            _service.UpdateRule(rule);
+
+            return Ok("Rule updated successfully.");
+
+        }
+
+        [HttpDelete("{id}")]
+
+        public IActionResult DeleteRule(int id)
+
+        {
+
+            _service.DeleteRule(id);
+
+            return Ok("Rule deleted successfully.");
+
+        }
+
+    }
+
+}
+

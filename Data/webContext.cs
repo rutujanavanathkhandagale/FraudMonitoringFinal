@@ -1,5 +1,6 @@
 ﻿using FraudMonitoringSystem.Models.Admin;
 using FraudMonitoringSystem.Models.Customer;
+using FraudMonitoringSystem.Models.Rules;
 using Microsoft.EntityFrameworkCore;
 
 namespace FraudMonitoringSystem.Data
@@ -20,6 +21,8 @@ namespace FraudMonitoringSystem.Data
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<RolePermission> RolePermissions { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Scenario> Scenarios { get; set; }
+        public DbSet<DetectionRule> DetectionRules { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

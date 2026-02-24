@@ -62,7 +62,7 @@ namespace FraudMonitoringSystem.Controllers.Admin
                 var result = await _service.CreateRoleAsync(dto);
                 return Ok(result);
             }
-            catch (Exceptions.RoleAlreadyExistsException ex)
+            catch (RoleAlreadyExistsException ex)
             {
                 return Conflict(new
                 {

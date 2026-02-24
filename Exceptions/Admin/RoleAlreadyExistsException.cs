@@ -1,4 +1,4 @@
-﻿namespace FraudMonitoringSystem.Exceptions
+﻿namespace FraudMonitoringSystem.Exceptions.Admin
 {
     [Serializable]
     internal class RoleAlreadyExistsException : Exception

@@ -1,0 +1,13 @@
+﻿using FraudMonitoringSystem.Models.Rules;
+
+namespace FraudMonitoringSystem.Services.Customer.Interfaces.Roles
+{
+    public interface IDetectionRuleService
+    {
+        DetectionRule GetRuleById(int id);
+        IEnumerable<DetectionRule> GetAllRules();
+        void CreateRule(DetectionRule rule);
+        void UpdateRule(DetectionRule rule);
+        void DeleteRule(int id);
+    }
+}
